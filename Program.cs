@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace csharp_showreel
+namespace CsharpShowreel
 {
     class Program
     {
