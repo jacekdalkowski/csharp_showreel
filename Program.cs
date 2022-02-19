@@ -6,7 +6,14 @@ namespace CsharpShowreel
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var readonlyProperties = new CsharpOne.ReadonlyProperties();
+            var weaklyTypedCollections = new CsharpOne.WeaklyTypedCollections();
+
+            new CsharpTwo();
+            new CsharpThree();
+            new CsharpFour();
+            new CsharpFive();
+            new CsharpSix();
         }
     }
 }
