@@ -47,8 +47,6 @@ namespace CsharpShowreel
             private System.Func<int, int, int> _add = (a, b) => a + b;
         }
 
-
-
         public class AnonymousTypes
         {
             public AnonymousTypes()

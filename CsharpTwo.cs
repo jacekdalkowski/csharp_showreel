@@ -5,7 +5,7 @@ namespace CsharpShowreel
     using GenCols = System.Collections.Generic;
 
     /// <summary>
-    /// C# 2 new features:
+    /// C# 2 main new features:
     ///  - Generics, 
     ///  - nullables (reason - DB stuff), 
     ///  - delegates, 
@@ -31,7 +31,7 @@ namespace CsharpShowreel
                 Container<int> container = new Container<int>();
                 int storedValue = container.Holder;
 
-                System.Collections.ArrayList newInstance = Generics.Create<System.Collections.ArrayList>();
+                object newInstance = Generics.Create<object>();
             }
         }
 
@@ -237,6 +237,7 @@ namespace CsharpShowreel
                 int r = Utils.Multiply(2, 10);
             }
         }
+        
         public class SeparateGetterSetterPropertyAccess
         {
             private string _property;
