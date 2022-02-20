@@ -1,7 +1,8 @@
 namespace CsharpShowreel
 {
     /// <summary>
-    /// 
+    /// C# 7.0 new features:
+    ///  - pattern matching: constant, type, var
     /// </summary>
     public class CsharpSevenZero
     {

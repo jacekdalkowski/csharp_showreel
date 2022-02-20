@@ -78,7 +78,9 @@ namespace CsharpShowreel
                 collectionOfInts.Remove(1);
                 collectionOfInts.Clear();
 
-                listOfInts = new System.Collections.Generic.List<int>();
+                listOfInts = new System.Collections.Generic.List<int>(2);
+                listOfInts.Add(0);
+                listOfInts.Add(0);
                 listOfInts[0] = 1;
                 listOfInts[1] = 2;
                 listOfInts.RemoveAt(0);

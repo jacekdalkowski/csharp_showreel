@@ -1,10 +1,12 @@
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace CsharpShowreel
 {
     /// <summary>
     /// C# 5 new features:
-    ///   - Async stuff
+    ///  - Async stuff
+    ///  - Caller info stuff
     /// </summary>
     public class CsharpFive
     {
@@ -27,13 +29,24 @@ namespace CsharpShowreel
 
         public void RunSynchronously2()
         {
+            // TPL way instead of await
             var result = Task.Run(() => GetData()).Result;
+        }
+
+        public  void ShowCallerInfo([CallerMemberName] string callerName = null, 
+            [CallerFilePath] string callerFilePath = null, 
+            [CallerLineNumber] int callerLine=-1)
+        {
+            System.Console.WriteLine("Caller Name: {0}", callerName);
+            System.Console.WriteLine("Caller FilePath: {0}", callerFilePath);
+            System.Console.WriteLine("Caller Line number: {0}", callerLine);
         }
 
         public CsharpFive()
         {
             RunSynchronously1();
             RunSynchronously2();
+            ShowCallerInfo();
         }
     }
 }
