@@ -143,6 +143,7 @@ namespace CsharpShowreel
         {
             public NullableTypes()
             {
+                int? maybeNumberShorter = null;
                 System.Nullable<int> maybeNumber = null;
                 if (!maybeNumber.HasValue) 
                 {

@@ -14,6 +14,13 @@ namespace CsharpShowreel
             new CsharpFour();
             new CsharpFive();
             new CsharpSix();
+            new CsharpSevenZero();
+            new CsharpSevenOne();
+            new CsharpSevenTwo();
+            new CsharpSevenThree();
+            new CsharpEight();
+            new CsharpNine();
+            new CsharpTen();
         }
     }
 }

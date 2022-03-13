@@ -36,5 +36,15 @@ namespace CsharpShowreel
         {
 
         }
+
+        public CsharpEight()
+        {
+            new NullableReferenceTypes();
+            new RangesAndIndices();
+            new DefaultImplementationsOfInterfaceMembers();
+            new SwitchExpressions();
+            new NewTargetTypedExpressions();
+            new IAsyncEnumerable();
+        }
     }
 }

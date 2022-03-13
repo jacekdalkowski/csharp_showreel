@@ -33,5 +33,11 @@ namespace CsharpShowreel
                 }
             }
         }
+
+        public CsharpSevenThree()
+        {
+            new StackallocWithInitializers();
+            new PatternBasedFixedStatements();
+        }
     }
 }

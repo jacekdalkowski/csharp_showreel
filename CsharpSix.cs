@@ -8,7 +8,14 @@ namespace CsharpShowreel
 
         public class NullConditionalOperator
         {
+            public NullConditionalOperator()
+            {
+                string someString = null;
+                int? someStringLength = someString?.Length;
 
+                string[] someStrings = null;
+                int? secondStringLength = someStrings[1].Length;
+            }
         }
 
         public class ExpressionBodiedMembers
@@ -49,6 +56,19 @@ namespace CsharpShowreel
         public class CollectionInitializersWithExtensionMethods
         {
 
+        }
+
+        public CsharpSix()
+        {
+            new NullConditionalOperator();
+            new ExpressionBodiedMembers();
+            new StringyFeatures();
+            new ExceptionFilters();
+            new ImportingStaticMembers();
+            new ReadonlyAutomaticallyImplementedProperties();
+            new AutomaticallyImplementedPropertiesInStructs();
+            new ObjectInitializersWithIndexers();
+            new CollectionInitializersWithExtensionMethods();
         }
     }
 }

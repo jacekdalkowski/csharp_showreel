@@ -18,4 +18,10 @@ public class CsharpSevenTwo
 
     }
 
+    public CsharpSevenTwo()
+    {
+        new ReadonlyStructs();
+        new ExtensionMethodsWithRefOrInParameters();
+        new RefLikeStructs();
+    }
 }

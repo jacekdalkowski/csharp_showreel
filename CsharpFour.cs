@@ -2,7 +2,9 @@ namespace CsharpShowreel
 {
     /// <summary>
     /// C# 4 new features:
-    ///   - COM stuff: dynamic types, some optimisations and facilities (streamlining ref parameters in COM, embedding COM Primary Interop Assemblies)
+    ///   - COM stuff: 
+    ///    - dynamic types, 
+    ///    - some optimisations and facilities (streamlining ref parameters in COM, embedding COM Primary Interop Assemblies)
     ///   - bonus: TPL library
     /// </summary>
     public class CsharpFour

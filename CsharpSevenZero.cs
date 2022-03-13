@@ -61,7 +61,37 @@ namespace CsharpShowreel
 
         public class SystemValueTuple
         {
-            
+            (int start, int stop) RangeWithNames { get; }
+            (int, int) RangeWithoutNames { get; }
+
+            (int start, int stop) CalculateRangeWithNames(int start, int length)
+            {
+                return (start, start + length);
+            }
+
+            (int, int) CalculateRangeWithoutNames(int start, int length)
+            {
+                return (start, start + length);
+            }
+
+            public SystemValueTuple()
+            {
+                RangeWithNames = (1, 1);
+                RangeWithNames = (start: 1, stop: 1);
+                RangeWithNames = (a: 1, b: 1);
+
+                RangeWithoutNames = (1, 1);
+                RangeWithoutNames = (start: 1, stop: 1);
+
+                RangeWithNames = CalculateRangeWithNames(2, 10);
+                RangeWithoutNames = CalculateRangeWithNames(2, 10);
+
+                RangeWithoutNames = CalculateRangeWithoutNames(2, 10);
+                RangeWithNames = CalculateRangeWithoutNames(2, 10);
+
+                (long start, long stop) LongRange = RangeWithNames;
+                LongRange.stop = 100;
+            }
         }
 
         public class DeconstructionOfTuples

@@ -43,5 +43,15 @@ namespace CsharpShowreel
             // public string LastName { get; init; }
             // }
         }
+
+        public CsharpNine()
+        {
+            new Records();
+            new InitOnlySetters();
+            new TopLevelStatements();
+            new PatternMatchingEnhancements();
+            new WithExpressions();
+            new DefaultImplementationsOfInterfaceMembers();
+        }
     }
 }
