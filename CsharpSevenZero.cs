@@ -3,6 +3,7 @@ namespace CsharpShowreel
     /// <summary>
     /// C# 7.0 new features:
     ///  - pattern matching: constant, type, var
+    ///  - 
     /// </summary>
     public class CsharpSevenZero
     {
@@ -96,12 +97,72 @@ namespace CsharpShowreel
 
         public class DeconstructionOfTuples
         {
+            private (System.Guid, string) GetUserData()
+            {
+                return (System.Guid.NewGuid(), "Beverly Hills 90210");
+            }
 
+            private void GetByItem()
+            {
+                (System.Guid, string) userData = GetUserData();
+                System.Guid id = userData.Item1;
+                string address = userData.Item2;
+            }
+
+            private void GetByExplicitlyTypedVariables()
+            {
+                (System.Guid id, string address) = GetUserData();
+            }
+
+            public void GetByVar()
+            {
+                var (id, address) = GetUserData();
+            }
+
+            public void GetByMixed()
+            {
+                (var id, string address) = GetUserData();
+            }
+
+            public DeconstructionOfTuples()
+            {
+                GetByItem();
+                GetByExplicitlyTypedVariables();
+                GetByVar();
+                GetByMixed();
+            }
         }
 
         public class DeconstructionOfAnythingWithDeconstructMethod
         {
+            public class Person
+            {
+                public System.Guid Id { get; set; }
+                public string FirstName { get; set; }
+                public string LastName { get; set; }
 
+                public Person(System.Guid id, string fname, string lname) => (Id, FirstName, LastName) = (id, fname, lname);
+
+                public void Deconstruct(out string fname, out string lname)
+                {
+                    fname = FirstName;
+                    lname = LastName;
+                }
+
+                public void Deconstruct(out System.Guid id, out string fname, out string lname)
+                {
+                    id = Id;
+                    fname = FirstName;
+                    lname = LastName;
+                }
+            }
+
+            public DeconstructionOfAnythingWithDeconstructMethod()
+            {
+                var person = new Person(System.Guid.NewGuid(), "Joe", "Doe");
+                var (fname, lname) = person;
+                var (id, fname_2, lname_2) = person;
+            }
         }
 
         public class RefLocals

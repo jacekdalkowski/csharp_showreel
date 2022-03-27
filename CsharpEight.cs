@@ -37,6 +37,11 @@ namespace CsharpShowreel
 
         }
 
+        public class ReadonlyInstanceMembers
+        {
+
+        }
+
         public CsharpEight()
         {
             new NullableReferenceTypes();
@@ -45,6 +50,7 @@ namespace CsharpShowreel
             new SwitchExpressions();
             new NewTargetTypedExpressions();
             new IAsyncEnumerable();
+            new ReadonlyInstanceMembers();
         }
     }
 }

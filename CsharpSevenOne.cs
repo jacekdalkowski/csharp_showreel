@@ -48,7 +48,8 @@ namespace CsharpShowreel
 
         public CsharpSevenOne()
         {
-            
+            new TypePatternMatchingWithGenerics();
+            new TupleElementNamesInferrence();
         }
     }
 }
