@@ -22,8 +22,13 @@ namespace CsharpShowreel
             {
                 string message = null;
 
-                // warning: dereference null.
-                System.Console.WriteLine($"The length of the message is {message.Length}");
+                try
+                {
+                    // warning: dereference null.
+                    System.Console.WriteLine($"The length of the message is {message.Length}");
+                }
+                catch {}
+                
 
                 var originalMessage = message;
                 message = "Hello, World!";
@@ -32,7 +37,11 @@ namespace CsharpShowreel
                 System.Console.WriteLine($"The length of the message is {message.Length}");
 
                 // warning!
-                System.Console.WriteLine(originalMessage.Length);
+                try
+                {
+                    System.Console.WriteLine(originalMessage.Length);
+                }
+                catch {}
             }
 
             public void AttributesOnAPISignatures([System.Diagnostics.CodeAnalysis.NotNullWhen(true)] object graphToTraverse)

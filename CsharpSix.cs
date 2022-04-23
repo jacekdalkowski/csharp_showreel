@@ -1,5 +1,7 @@
 namespace CsharpShowreel
 {
+    using System.Collections;
+    using System.Collections.Generic;
     using static System.String;
 
     /// <summary>
@@ -7,6 +9,11 @@ namespace CsharpShowreel
     /// </summary>
     public class CsharpSix
     {
+
+        public class AutoPropertyInitializers
+        {
+            public string Property { get; set; } = "value";
+        }
 
         public class NullConditionalOperator
         {
@@ -91,7 +98,23 @@ namespace CsharpShowreel
 
         public class ObjectInitializersWithIndexers
         {
-            
+            public ObjectInitializersWithIndexers()
+            {
+                var identity = new Matrix
+                {
+                    [0, 0] = 1.0,
+                    [0, 1] = 0.0,
+                    [0, 2] = 0.0,
+
+                    [1, 0] = 0.0,
+                    [1, 1] = 1.0,
+                    [1, 2] = 0.0,
+
+                    [2, 0] = 0.0,
+                    [2, 1] = 0.0,
+                    [2, 2] = 1.0,
+                };
+            }
         }
         
         public class CollectionInitializersWithExtensionMethods
@@ -101,6 +124,7 @@ namespace CsharpShowreel
 
         public CsharpSix()
         {
+            new AutoPropertyInitializers();
             new NullConditionalOperator();
             new ExpressionBodiedMembers();
             new StringyFeatures();
@@ -110,6 +134,36 @@ namespace CsharpShowreel
             new AutomaticallyImplementedPropertiesInStructs();
             new ObjectInitializersWithIndexers();
             new CollectionInitializersWithExtensionMethods();
+        }
+    }
+
+    public class Matrix
+    {
+        private double[,] storage = new double[3, 3];
+
+        public double this[int row, int column]
+        {
+            // The embedded array will throw out of range exceptions as appropriate.
+            get { return storage[row, column]; }
+            set { storage[row, column] = value; }
+        }
+    }
+
+    public class CollectionWithoutAdd : IEnumerable
+    {
+        public IList<object> Store { get; private set; } = new List<object>();  
+
+        public IEnumerator GetEnumerator()
+        {
+            return Store.GetEnumerator();
+        }
+    }
+
+    public static class Extensions
+    {
+        public static void Add<T>(this CollectionWithoutAdd collection, T item)
+        {
+            collection.Store.Add(item);
         }
     }
 }
