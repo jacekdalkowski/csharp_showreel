@@ -103,12 +103,87 @@ namespace CsharpShowreel
 
         public class ChangesInLocking
         {
+            private static readonly System.Object obj = new System.Object();
 
+            public void LockingBeforeCsharpFour()
+            {
+                lock(obj) {}
+
+                // the above was implemented as:
+                var temp = obj;
+                System.Threading.Monitor.Enter(temp);
+                try
+                {
+                    // body
+                }
+                finally
+                {
+                    System.Threading.Monitor.Exit(temp);
+                }
+            }
+
+            public void LockingInCsharpFour()
+            {
+                lock(obj) {}
+
+                // the above is implemented as:
+                bool lockWasTaken = false;
+                var temp = obj;
+                try
+                {
+                    System.Threading.Monitor.Enter(temp, ref lockWasTaken);
+                    // body
+                }
+                finally
+                {
+                    if (lockWasTaken)
+                    {
+                        System.Threading.Monitor.Exit(temp); 
+                    }
+                }
+            }
+
+            public ChangesInLocking()
+            {
+                LockingBeforeCsharpFour();
+                LockingInCsharpFour();
+            }
         }
 
         public class ChangesInFieldLikeEvents
         {
+            private System.EventHandler _myEvent;
 
+            public event System.EventHandler EventsImplementationBeforeCsharp4
+            {
+                add
+                {
+                    lock (this)
+                    {
+                        _myEvent += value;
+                    }
+                }
+                remove
+                {
+                    lock (this)
+                    {
+                        _myEvent -= value;
+                    }
+                }        
+            }
+
+            // Interlocked.CompareExchange
+            public event System.EventHandler EventsImplementationInCsharp4
+            {
+                add
+                {
+                    // no locking on 'this', using Interlocked.CompareExchange instead. Cannot find the exact sample...
+                }
+                remove
+                {
+                    // no locking on 'this', using Interlocked.CompareExchange instead. Cannot find the exact sample...
+                }        
+            }
         }
 
         public CsharpFour()
@@ -117,6 +192,9 @@ namespace CsharpShowreel
             new OptionalParameters();
             new DynamicType();
             new GenericVarianceForInterfaces();
+            new GenericVarianceForDelegates();
+            new ChangesInLocking();
+            new ChangesInFieldLikeEvents();
         }
     }
 }

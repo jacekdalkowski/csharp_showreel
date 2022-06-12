@@ -44,6 +44,29 @@ namespace CsharpShowreel
             // }
         }
 
+        public class NewTargetTypedExpressions
+        {
+            public class Friend
+            {
+                public Friend() { }
+
+                public Friend(string firstName, string lastName)
+                {
+                    FirstName = firstName;
+                    LastName = lastName;
+                }
+
+                public string FirstName { get; set; }
+                public string LastName { get; set; }
+            }
+
+            public NewTargetTypedExpressions()
+            {
+                Friend friend_0 = new();
+                Friend friend_1 = new("Thomas", "Huber");
+            }
+        }
+
         public CsharpNine()
         {
             new Records();
@@ -52,6 +75,7 @@ namespace CsharpShowreel
             new PatternMatchingEnhancements();
             new WithExpressions();
             new DefaultImplementationsOfInterfaceMembers();
+            new NewTargetTypedExpressions();
         }
     }
 }

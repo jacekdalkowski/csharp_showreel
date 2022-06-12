@@ -119,7 +119,7 @@ namespace CsharpShowreel
         
         public class CollectionInitializersWithExtensionMethods
         {
-
+            private CollectionWithoutAdd _collectionWithoutAdd = new CollectionWithoutAdd { 1, 2, "3", new object() };
         }
 
         public CsharpSix()

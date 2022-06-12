@@ -84,40 +84,83 @@ namespace CsharpShowreel
             }
         }
 
-        public class DefaultImplementationsOfInterfaceMembers
+        public interface DefaultImplementationsOfInterfaceMembers
         {
-
+            void ToBeImplemented(string data);
+            void AlreadyImplemented(string data) => ToBeImplemented(data);
         }
 
         public class SwitchExpressions
         {
+            public enum Direction
+            {
+                Up,
+                Down,
+                Right,
+                Left
+            }
 
-        }
+            public enum Orientation
+            {
+                North,
+                South,
+                East,
+                West
+            }
 
-        public class NewTargetTypedExpressions
-        {
-            
+            public static Orientation ToOrientation(Direction direction) => direction switch
+            {
+                Direction.Up    => Orientation.North,
+                Direction.Right => Orientation.East,
+                Direction.Down  => Orientation.South,
+                Direction.Left  => Orientation.West,
+                _ => throw new System.ArgumentOutOfRangeException(nameof(direction), $"Not expected direction value: {direction}"),
+            };
         }
 
         public class IAsyncEnumerable
         {
+            public static async System.Collections.Generic.IAsyncEnumerable<int> RangeAsync(int start, int count, int delay)
+            {
+                for (int i = start; i < start + count; i++) 
+                {
+                    await Task.Delay(delay);
+                    yield return i;
+                }
+            }
 
+            public async void RunIAsyncEnumerable()
+            {
+                await foreach (int item in RangeAsync(10, 3, 50)) { // IAsyncEnumerable
+                    System.Console.Write(item + " "); // Prints 10 11 12
+                }
+            }
         }
 
-        public class ReadonlyInstanceMembers
+        public struct StructReadonlyInstanceMembers
         {
-
+            public double Height { get; set; }
+            public double Width { get; set; }
+            public readonly double Area => (Height * Width);
+            public StructReadonlyInstanceMembers(double height, double width)
+            {
+                Height = height;
+                Width = width;
+            }
+            public readonly override string ToString()
+            {
+                return $"(Total area for height: {Height}, width: {Width}) is {Area}";
+            } 
         }
 
         public CsharpEight()
         {
             new NullableReferenceTypes();
             new RangesAndIndices();
-            new DefaultImplementationsOfInterfaceMembers();
+            // DefaultImplementationsOfInterfaceMembers
             new SwitchExpressions();
-            new NewTargetTypedExpressions();
-            new IAsyncEnumerable();
-            new ReadonlyInstanceMembers();
+            new IAsyncEnumerable().RunIAsyncEnumerable();
+            new StructReadonlyInstanceMembers(2, 4);
         }
     }
 }
